@@ -22,24 +22,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.125.0 # Có thể thay bằng phiên bản hugo bạn đang dùng
+      HUGO_VERSION: 0.125.0
+      # Ép các action chạy trên Node.js 24 để xóa cảnh báo deprecation
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
     steps:
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${{ env.HUGO_VERSION }}/hugo_extended_${{ env.HUGO_VERSION }}_linux-amd64.deb
           sudo dpkg -i ${{ runner.temp }}/hugo.deb          
-      - name: Checkout
+
+      - name: Checkout Source Code
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          # QUAN TRỌNG: Dòng này bắt buộc phải có true để kéo cả code của Theme về khi build
+          submodules: true
+          fetch-depth: 0
+
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5 # Cập nhật lên v5 để tương thích tốt hơn
+
       - name: Build with Hugo
         run: |
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"          
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
