@@ -1,0 +1,9 @@
+baseURL = 'https://Beanitto.github.io/' # Thay "username" bằng tên tài khoản GitHub của bạn
+languageCode = 'vi'
+title = 'Blog Kỹ Thuật Của Tôi'
+theme = 'PaperMod'
+
+[params]
+    defaultTheme = "auto" # Tự động chuyển Dark/Light mode theo hệ điều hành
+    showShareButtons = true
+    showToc = true # Hiển thị mục lục bài viết
