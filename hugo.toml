@@ -1,4 +1,4 @@
-baseURL = 'https://Beanitto.github.io/' # Thay "username" bằng tên tài khoản GitHub của bạn
+baseURL = 'https://beanitto.github.io/' # Thay "username" bằng tên tài khoản GitHub của bạn
 languageCode = 'vi'
 title = 'Blog Kỹ Thuật Của Tôi'
 theme = 'PaperMod'
