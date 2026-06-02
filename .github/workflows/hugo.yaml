@@ -22,9 +22,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.125.0
-      # Ép các action chạy trên Node.js 24 để xóa cảnh báo deprecation
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
+      HUGO_VERSION: 0.148.0 # Nâng cấp lên bản cao hơn yêu cầu tối thiểu 0.146.0 của theme
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Install Hugo CLI
         run: |
